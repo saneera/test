@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property name="FILE_HOME" value="c:/gateway-logs" />
+
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%date [%thread] %-5level %logger{36} - %msg%n</Pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="fileApender" class="ch.qos.logback.core.FileAppender">
+		<file>${FILE_HOME}/adelaide-orators-integration.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>%date [%thread] %-5level %logger{36} - %msg%n</Pattern>
+		</encoder>
+	</appender>
+	
+	
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="fileApender" />
+		<appender-ref ref="consoleAppender" />		
+	</root>
+	
+	<logger name="com.advam" level="DEBUG" additivity="false">
+		<appender-ref ref="fileApender" />
+		<appender-ref ref="consoleAppender" />		
+	</logger>	
+	
+
+</configuration>
